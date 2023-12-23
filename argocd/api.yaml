@@ -11,6 +11,7 @@ spec:
           - image-tag: pr-2
           - image-tag: pr-3
           - image-tag: pr-4
+          - image-tag: pr-5
   template:
     metadata:
       name: "api-{{image-tag}}"
