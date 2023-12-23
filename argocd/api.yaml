@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements: []
+  template:
+    metadata:
+      name: api
+    spec:
+      project: default
+      helm:
+        parameters:
+        - name: "image.tag"
+          value: {{image-tag}}
+        valueFiles:
+        - values.yaml
+      source:
+        repoURL: https://github.com/nizar-i/example-argocd.git
+        targetRevision: HEAD
+        path: helm-charts/api
+      destination:
+        server: 'in-cluster'
+        namespace: api
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
