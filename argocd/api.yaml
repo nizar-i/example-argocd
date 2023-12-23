@@ -5,8 +5,9 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - list:
-      elements: []
+    - list:
+        elements:
+          - image-tag: pr-1
   template:
     metadata:
       name: "api-{{image-tag}}"
@@ -18,10 +19,10 @@ spec:
         path: helm-charts/api
         helm:
           parameters:
-          - name: "image.tag"
-            value: "{{image-tag}}"
+            - name: "image.tag"
+              value: "{{image-tag}}"
           valueFiles:
-          - values.yaml
+            - values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: api
@@ -30,5 +31,4 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        - CreateNamespace=true
-
+          - CreateNamespace=true
