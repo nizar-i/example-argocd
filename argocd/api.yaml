@@ -13,16 +13,16 @@ spec:
       name: api
     spec:
       project: default
-      helm:
-        parameters:
-        - name: "image.tag"
-          value: "{{image-tag}}"
-        valueFiles:
-        - values.yaml
       source:
         repoURL: https://github.com/nizar-i/example-argocd.git
         targetRevision: HEAD
         path: helm-charts/api
+        helm:
+          parameters:
+          - name: "image.tag"
+            value: "{{image-tag}}"
+          valueFiles:
+          - values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: api
