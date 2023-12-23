@@ -24,7 +24,7 @@ spec:
         targetRevision: HEAD
         path: helm-charts/api
       destination:
-        server: 'in-cluster'
+        server: https://kubernetes.default.svc
         namespace: api
     syncPolicy:
       automated:
