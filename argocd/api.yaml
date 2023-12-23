@@ -15,7 +15,7 @@ spec:
       helm:
         parameters:
         - name: "image.tag"
-          value: {{image-tag}}
+          value: "{{image-tag}}"
         valueFiles:
         - values.yaml
       source:
