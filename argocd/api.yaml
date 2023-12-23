@@ -8,6 +8,7 @@ spec:
     - list:
         elements:
           - image-tag: pr-1
+          - image-tag: pr-2
   template:
     metadata:
       name: "api-{{image-tag}}"
