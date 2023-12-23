@@ -9,7 +9,7 @@ spec:
       elements: []
   template:
     metadata:
-      name: api
+      name: "api-{{image-tag}}"
     spec:
       project: default
       source:
